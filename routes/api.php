@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\User\GenerateTokenController;
 use App\Http\Controllers\Api\V1\User\LoginController;
+use App\Http\Controllers\Api\V1\User\LogoutController;
 use App\Http\Controllers\Api\V1\User\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,8 +40,21 @@ Route::prefix('v1')->group(function () {
     Route::post('user/login', LoginController::class);
 
     /**
-     * The route of generating a new access token
+     * Users with one of these abilities can have access to the group of routes
      * 
      */
-    Route::get('user/generate-token', GenerateTokenController::class)->middleware(['auth:sanctum', 'ability:user-unconfirmed,user-confirmed']);
+    Route::middleware(['auth:sanctum', 'ability:user-unconfirmed,user-confirmed'])->group(function () {
+
+        /**
+         * The route of generating a new access token
+         * 
+         */
+        Route::get('user/generate-token', GenerateTokenController::class);
+
+        /**
+         * The route of logout
+         * 
+         */
+        Route::post('user/logout', LogoutController::class);
+    });
 });
