@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Front\User\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/** 
+ * The url of email's verification
+ * 
+ */
+
+Route::get('/email/verify/{id}/{hash}', EmailVerificationController::class)->name('verification.verify');
