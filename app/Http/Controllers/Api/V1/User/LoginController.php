@@ -18,12 +18,11 @@ class LoginController extends Controller
      */
     public function __invoke(LoginRequest $request)
     {
-
-        $user = User::where($request->validated())->first();
-
-        if (!$user) {
+        if (!Auth::attempt($request->validated())) {
             return response(['message' => 'Unauthorized'], 401);
         }
+
+        $user = User::where('email', $request->safe()->email)->first();
 
         $ability = $user->hasVerifiedEmail() ? 'user-confirmed' : 'user-unconfirmed';
         $token = $user->createToken(time(), [$ability])->plainTextToken;

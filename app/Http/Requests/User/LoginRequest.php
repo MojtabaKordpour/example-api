@@ -3,7 +3,7 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class LoginRequest extends FormRequest
 {
@@ -30,9 +30,4 @@ class LoginRequest extends FormRequest
         ];
     }
 
-
-    public function validated()
-    {
-        return array_merge(parent::validated(), ['password' => Crypt::encrypt($this->input('password'))]);
-    }
 }

@@ -17,7 +17,7 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterRequest $request)
     {
-        $user = User::create($request->safe()->all());
+        $user = User::create($request->validated());
         event(new Registered($user));
         $token = $user->createToken(time(), ['user-unconfirmed'])->plainTextToken;
 
