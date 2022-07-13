@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\V1\User\CodeCheckController;
+use App\Http\Controllers\Api\V1\User\ForgetPasswordController;
 use App\Http\Controllers\Api\V1\User\GenerateTokenController;
 use App\Http\Controllers\Api\V1\User\LoginController;
 use App\Http\Controllers\Api\V1\User\LogoutController;
 use App\Http\Controllers\Api\V1\User\RegisterController;
+use App\Http\Controllers\Api\V1\User\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,11 +36,28 @@ Route::prefix('v1')->group(function () {
      * 
      */
     Route::post('user', RegisterController::class);
+
     /**
      * The route of login
      * 
      */
     Route::post('user/login', LoginController::class);
+
+    /**
+     * The route Of reseting user password 
+     * 
+     */
+    Route::post('user/password/forget', ForgetPasswordController::class);
+    /**
+     * The route Of checking the code which has been sent 
+     * 
+     */
+    Route::post('user/password/check-code', CodeCheckController::class);
+    /**
+     * The route Of checking the code which has been sent 
+     * 
+     */
+    Route::post('user/password/reset', ResetPasswordController::class);
 
     /**
      * Users with one of these abilities can have access to the group of routes
