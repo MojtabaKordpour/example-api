@@ -34,6 +34,5 @@ class LoginRequest extends FormRequest
     public function validated()
     {
         return array_merge(parent::validated(), ['password' => Crypt::encrypt($this->input('password'))]);
-        return parent::validated();
     }
 }
