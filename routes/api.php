@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\V1\User\CodeCheckController;
-use App\Http\Controllers\Api\V1\User\ForgetPasswordController;
-use App\Http\Controllers\Api\V1\User\GenerateTokenController;
-use App\Http\Controllers\Api\V1\User\LoginController;
-use App\Http\Controllers\Api\V1\User\LogoutController;
-use App\Http\Controllers\Api\V1\User\RegisterController;
-use App\Http\Controllers\Api\V1\User\ResetPasswordController;
+use App\Http\Controllers\Api\V1\Auth\CodeCheckController;
+use App\Http\Controllers\Api\V1\Auth\ForgetPasswordController;
+use App\Http\Controllers\Api\V1\Auth\GenerateTokenController;
+use App\Http\Controllers\Api\V1\Auth\LoginController;
+use App\Http\Controllers\Api\V1\Auth\LogoutController;
+use App\Http\Controllers\Api\V1\Auth\RegisterController;
+use App\Http\Controllers\Api\V1\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,11 +48,13 @@ Route::prefix('v1')->group(function () {
      * 
      */
     Route::post('user/password/forget', ForgetPasswordController::class);
+
     /**
      * The route Of checking the code which has been sent 
      * 
      */
     Route::post('user/password/check-code', CodeCheckController::class);
+    
     /**
      * The route Of checking the code which has been sent 
      * 
