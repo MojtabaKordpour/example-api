@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\User\GenerateTokenController;
+use App\Http\Controllers\Api\V1\User\LoginController;
 use App\Http\Controllers\Api\V1\User\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,11 @@ Route::prefix('v1')->group(function () {
      * 
      */
     Route::post('user', RegisterController::class);
+    /**
+     * The route of login
+     * 
+     */
+    Route::post('user/login', LoginController::class);
 
     /**
      * The route of generating a new access token
