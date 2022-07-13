@@ -42,5 +42,5 @@ Route::prefix('v1')->group(function () {
      * The route of generating a new access token
      * 
      */
-    Route::get('user/generate-token', GenerateTokenController::class)->middleware(['auth:sanctum', 'abilities:user-unconfirmed,user-confirmed']);
+    Route::get('user/generate-token', GenerateTokenController::class)->middleware(['auth:sanctum', 'ability:user-unconfirmed,user-confirmed']);
 });
