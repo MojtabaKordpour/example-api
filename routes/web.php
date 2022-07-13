@@ -24,5 +24,4 @@ Route::get('/', function () {
  * The url of email's verification
  * 
  */
-
 Route::get('/email/verify/{id}/{hash}', EmailVerificationController::class)->name('verification.verify');

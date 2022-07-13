@@ -19,7 +19,11 @@ class RegisterController extends Controller
     {
         $user = User::create($request->safe()->all());
         event(new Registered($user));
+        $token = $user->createToken(time(), ['user-unconfirmed'])->plainTextToken;
 
-        return $user;
+        return [
+            'user' => $user,
+            'token' => $token
+        ];
     }
 }
