@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Auth\ChangePasswordController;
 use App\Http\Controllers\Api\V1\Auth\CodeCheckController;
 use App\Http\Controllers\Api\V1\Auth\ForgetPasswordController;
 use App\Http\Controllers\Api\V1\Auth\GenerateTokenController;
@@ -54,7 +55,7 @@ Route::prefix('v1')->group(function () {
      * 
      */
     Route::post('user/password/check-code', CodeCheckController::class);
-    
+
     /**
      * The route Of checking the code which has been sent 
      * 
@@ -78,5 +79,11 @@ Route::prefix('v1')->group(function () {
          * 
          */
         Route::post('user/logout', LogoutController::class);
+
+        /**
+         * The route of Changing password
+         * 
+         */
+        Route::post('user/password/change', ChangePasswordController::class);
     });
 });
